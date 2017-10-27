@@ -43,6 +43,10 @@ def main():
         _check_youtube_dl(ydl)
 
         for index, recording in enumerate(recordings):
+            if not recording.get('mp4'):
+                print('ERROR: No mp4 linked for talk: {title}'.format(recording.get('title', '')))
+                continue
+
             url = 'https://' + recording['mp4'].lstrip('/')
             try:
                 print('Downloading {current}/{total}: {title}'.format(current=index, total=total, title=recording['title']))
