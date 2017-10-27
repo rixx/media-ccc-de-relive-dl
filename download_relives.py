@@ -6,15 +6,17 @@ import requests
 import youtube_dl
 
 
-try:
-    ytdl.get_info_extractor(ie_key='StreamingCCC')
-except KeyError:
-    print('Please install a version of youtube-dl that can download relives.')
-    print('  pip install -U git+https://github.com/rixx/youtube-dl@ccc-de-relive')
-    sys.exit(1)
+def _check_youtube_dl(ydl):
+    try:
+        ydl.get_info_extractor(ie_key='StreamingCCC')
+    except KeyError:
+        print('Please install a version of youtube-dl that can download relives.')
+        print('  pip install -U git+https://github.com/rixx/youtube-dl@ccc-de-relive')
+        sys.exit(1)
 
 
 def main():
+
     if len(sys.argv) != 2:
         print('Please provide an event slug!')
         return
@@ -38,6 +40,8 @@ def main():
     total = len(recordings)
     ydl_opts = {}
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+        _check_youtube_dl(ydl)
+
         for index, recording in enumerate(recordings):
             url = 'https://' + recording['mp4'].lstrip('/')
             try:
