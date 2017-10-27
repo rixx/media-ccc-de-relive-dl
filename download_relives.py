@@ -38,8 +38,7 @@ def main():
         return
 
     total = len(recordings)
-    ydl_opts = {}
-    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+    with youtube_dl.YoutubeDL() as ydl:
         _check_youtube_dl(ydl)
 
         for index, recording in enumerate(recordings):
@@ -47,7 +46,8 @@ def main():
                 print('ERROR: No mp4 linked for talk: {title}'.format(recording.get('title', '')))
                 continue
 
-            url = 'https://' + recording['mp4'].lstrip('/')
+            talk_id = recording['id']
+            url = 'https://streaming.media.ccc.de/{event}/relive/{talk_id}'.format(event=event_slug, talk_id=talk_id)
             try:
                 print('Downloading {current}/{total}: {title}'.format(current=index, total=total, title=recording['title']))
                 ydl.download([url])
