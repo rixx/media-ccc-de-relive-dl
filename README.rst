@@ -15,3 +15,8 @@ support, which is a not-yet-merged feature.
 3. Install the required youtube-dl branch: ``pip install -U git+https://github.com/rixx/youtube-dl@ccc-de-relive``
 4. Find your (case insensitive) event slug by looking up your event on https://streaming.media.ccc.de
 5. Execute this script: ``./download_relives.py pw17``
+
+Note
+====
+
+Built for PrivacyWeek 2017 by @luto and @rixx – if today is **not** in 2017 … use with caution.
