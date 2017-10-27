@@ -42,15 +42,16 @@ def main():
         _check_youtube_dl(ydl)
 
         for index, recording in enumerate(recordings):
+            talk_id = recording['id']
+            url = 'https://streaming.media.ccc.de/{event}/relive/{talk_id}'.format(event=event_slug, talk_id=talk_id)
+
             if not recording.get('mp4'):
                 try:
                     print('ERROR: No mp4 linked for talk: {title}'.format(title=recording.get('title', '')))
                 except:
-                    print('ERROR: No mp4 linked for a talk that must not be named.')
+                    print('ERROR: No mp4 linked for a talk that must not be named. Its URL is {url}.'.format(url=url))
                 continue
 
-            talk_id = recording['id']
-            url = 'https://streaming.media.ccc.de/{event}/relive/{talk_id}'.format(event=event_slug, talk_id=talk_id)
             try:
                 print('Downloading {current}/{total}: {title}'.format(current=index, total=total, title=recording['title']))
                 ydl.download([url])
