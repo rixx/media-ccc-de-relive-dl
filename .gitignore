@@ -105,3 +105,7 @@ venv.bak/
 .mypy_cache/
 
 # End of https://www.gitignore.io/api/python
+
+# downloaded media files
+*.mp4
+*.mp4.part
