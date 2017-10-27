@@ -19,4 +19,4 @@ support, which is a not-yet-merged feature.
 Note
 ====
 
-Built for PrivacyWeek 2017 by @luto and @rixx – if today is **not** in 2017 … use with caution.
+Built for PrivacyWeek 2017 by luto and rixx – if today is **not** in 2017 … use with caution. PRs welcome.
