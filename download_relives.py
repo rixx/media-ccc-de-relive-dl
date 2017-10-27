@@ -43,7 +43,7 @@ def main():
 
         for index, recording in enumerate(recordings):
             if not recording.get('mp4'):
-                print('ERROR: No mp4 linked for talk: {title}'.format(recording.get('title', '')))
+                print('ERROR: No mp4 linked for talk: {title}'.format(title=recording.get('title', '')))
                 continue
 
             talk_id = recording['id']
